@@ -19,15 +19,18 @@ let fillGrid = function(gridSize) {
         }
         container.style.setProperty('grid-template-columns', columnCount);
     }
+    
     let createSquares = (gridSize) => {
         for (let j = 1; j <= (gridSize ** 2); j++) {
             container.appendChild(square.cloneNode());
         }
     }
-
+    
+    
+    document.querySelector('#default').addEventListener('click', () => applyColor());
+    
     addColumn(gridSize);
     createSquares(gridSize);
-    changeColor();
 }
 
 let resetGrid = function() {
@@ -37,22 +40,37 @@ let resetGrid = function() {
     }
 }
 
-// Initial function evocation
+function colorRandomiser() {
+    let rgbValue = () => Math.floor(Math.random() * 256);
+    return `rgb(${rgbValue()}, ${rgbValue()}, ${rgbValue()})`;
+}
 
-fillGrid(gridSize);
+// Drawing function
 
-// Drawing listener
-
-function changeColor() {
+function applyColor(color = () => "black") {
     let gridBoxes = document.querySelectorAll('.gridbox');
     gridBoxes.forEach(box => {
         box.addEventListener('mouseover', () => {
-            box.style.backgroundColor = "black";
+            box.style.backgroundColor = color();
         })
     });
 }
 
-// Reset button
+// Color buttons
+
+document.querySelector('#makerandom').addEventListener('click', () => {
+    selectedColor = colorRandomiser;
+    applyColor(selectedColor);
+});
+
+document.querySelector('#default').addEventListener('click', () => "black")
+
+// Initial function evocations
+
+fillGrid(gridSize);
+applyColor()
+
+// // Reset button
 
 document.querySelector('#reset').addEventListener('click', () => {
     let gridInput = prompt('Please enter a number up to 100', '');
@@ -61,4 +79,7 @@ document.querySelector('#reset').addEventListener('click', () => {
     }
     resetGrid();
     fillGrid(gridInput);
+    applyColor();
 });
+
+// Color buttons
