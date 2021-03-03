@@ -1,22 +1,49 @@
-let container = document.querySelector('#container');
-let square = document.createElement('div'); 
-square.classList.add("gridbox");
-let gridCount = 8;
+// Starting values
 
-let fillGrid = function(gridCount) {
-    // let addColumns = () => 
-    let columnCount = container.style.gridTemplateColumns;
-    for (let i = 1; i <= gridCount; i++) {
-        columnCount += " 1fr";
-        console.log(columnCount);
+let container = document.querySelector('#container');
+
+// Create grid cells
+
+let square = document.createElement('div');
+square.textContent = "";
+square.classList.add("gridbox");
+let columnCount = container.style.gridTemplateColumns;
+
+let gridSize = 16;
+
+let fillGrid = function(gridSize) { 
+    let addColumn = (gridSize) => { 
+        for (let i = 1; i <= gridSize; i++) {
+            columnCount += " 1fr";
+        }
+        container.style.setProperty('grid-template-columns', columnCount);
     }
-    container.style.setProperty('grid-template-columns', columnCount);
-    for (let j = 1; j <= (gridCount ** 2); j++) {
-        container.appendChild(square.cloneNode());
+    let createSquares = (gridSize) => {
+        for (let j = 1; j <= (gridSize ** 2); j++) {
+            container.appendChild(square.cloneNode());
+        }
+    }
+
+    addColumn(gridSize);
+    createSquares(gridSize);
+}
+
+let resetGrid = function() {
+    columnCount = "";
+    while (container.firstChild) {
+        container.removeChild(container.lastChild)
     }
 }
 
-fillGrid(gridCount);
+fillGrid(gridSize);
 
+// Reset button
 
-// fillGrid(gridCount);
+document.querySelector('#reset').addEventListener('click', () => {
+    let gridInput = prompt('Please enter a number up to 100', '');
+    while (gridInput > 100) {
+        gridInput = prompt('I said UP TO 100...', '');
+    }
+    resetGrid();
+    fillGrid(gridInput);
+});
