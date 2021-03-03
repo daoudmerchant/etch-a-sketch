@@ -1,0 +1,12 @@
+.gridbox {
+    background-color: black;
+    width: 10px;
+    height: 10px;
+}
+
+#container {
+    display: grid;
+    gap: 2px;
+    width: 150px;
+    height: 150px;
+}
