@@ -1,15 +1,16 @@
 // Starting values
 
 let container = document.querySelector('#container');
+let gridSize = 16;
 
-// Create grid cells
+// Create grid cell element in memory
 
 let square = document.createElement('div');
 square.textContent = "";
 square.classList.add("gridbox");
 let columnCount = container.style.gridTemplateColumns;
 
-let gridSize = 16;
+// Functions
 
 let fillGrid = function(gridSize) { 
     let addColumn = (gridSize) => { 
@@ -26,16 +27,30 @@ let fillGrid = function(gridSize) {
 
     addColumn(gridSize);
     createSquares(gridSize);
+    changeColor();
 }
 
 let resetGrid = function() {
     columnCount = "";
     while (container.firstChild) {
-        container.removeChild(container.lastChild)
+        container.removeChild(container.lastChild);
     }
 }
 
+// Initial function evocation
+
 fillGrid(gridSize);
+
+// Drawing listener
+
+function changeColor() {
+    let gridBoxes = document.querySelectorAll('.gridbox');
+    gridBoxes.forEach(box => {
+        box.addEventListener('mouseover', () => {
+            box.style.backgroundColor = "black";
+        })
+    });
+}
 
 // Reset button
 

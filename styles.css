@@ -4,13 +4,14 @@
 }
 
 .gridbox {
-    background-color: black;
+    background-color: inherit;
 }
 
 #container {
+    border: 1px solid black;
     display: grid;
     margin: 2em auto;
     gap: 2px;
-    width: 80vh;
+    width: 80vh; /* Ideally this should be the largest square possible */
     height: 80vh;
 }
