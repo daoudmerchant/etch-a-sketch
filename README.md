@@ -1,4 +1,6 @@
-# Brief
+# [Live Demo](https://daoudmerchant.github.io/etch-a-sketch/)
+
+## Brief
 
 To build an adaptively-sized grid 'sketch pad' with various mouse-over drawing effects
 
@@ -50,4 +52,4 @@ I found this one really hard. I find myself struggling to think of anything else
 
 ### Take the time to do it right
 
-Related to the first point, but I was inches from throwing in the towel for the third optional problem when I knew it would bugme forever not to have done it. The problem was not me tackling the last problem, but wanting it to be the 'icing on the cake' when it was actually baking a new and far more difficult cake from scratch. More time, more planning, more breaks. It takes the time it takes and I shouldn't feel bad about that.
+Related to the first point, but I was inches from throwing in the towel for the third optional problem when I knew it would bug me forever not to have done it. The problem was not me tackling the last problem, but wanting it to be the 'icing on the cake' when it was actually baking a new and far more difficult cake from scratch. More time, more planning, more breaks. It takes the time it takes and I shouldn't feel bad about that.
